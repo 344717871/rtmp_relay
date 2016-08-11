@@ -3,7 +3,7 @@ rtmp relay server：
 ==================================================
 * Platform：linux
 
-* How to use?
+* How to use?<br/>
 example:
 xxx# ./rtmp_relay rtmp://x.x.x.x/live/source rtmp://x.x.x.x/live/target
 first parameter: source rtmp server url
