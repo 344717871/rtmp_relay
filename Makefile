@@ -20,7 +20,7 @@ OBJFILE = $(CFILES:.c=.o) $(C++FILES:.cpp=.o)
 all:$(TARGET)  
   
 $(TARGET): $(OBJFILE)  
-	$(LINK) $^ $(LIBS) /usr/local/lib/libboost_system.a -Wall -fPIC -o $@
+	$(LINK) $^ $(LIBS) ./libboost_system.a -Wall -fPIC -o $@
   
 %.o:%.c  
 	$(CC) -o $@ $(CCFLAGS) $< $(INCLUDES)  
