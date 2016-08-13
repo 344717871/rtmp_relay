@@ -139,7 +139,6 @@ int LibRtmpSession::Connect(int iFlag){
     //LOGI("RTMP_EnableWrite...");
     if(iFlag !=0)
     {
-        printf("RTMP_EnableWrite...\r\n");
         RTMP_EnableWrite(_pRtmp);
     }
     
@@ -343,9 +342,7 @@ int LibRtmpSession::SendAudioSpecificConfig(unsigned short usASCFlag)
     int iSpeclen = 2;
     unsigned char szAudioSpecData[2];
 
-    printf("SendAudioSpecificConfig: start 0x%04x.\r\n", usASCFlag);
     usASCFlag = (usASCFlag>>8) | (usASCFlag<<8);
-    printf("SendAudioSpecificConfig: end 0x%04x.\r\n", usASCFlag);
     memcpy(szAudioSpecData, &usASCFlag, sizeof(usASCFlag));
     
     unsigned char* body;
@@ -375,7 +372,6 @@ int LibRtmpSession::SendAudioSpecificConfig(unsigned short usASCFlag)
     
     int iRet = RtmpPacketSend(&rtmp_pack);
     LOGI("SendAudioSpecificConfig: %02x %02x %02x %02x, return %d",  body[0],  body[1],  body[2],  body[3], iRet);
-    printf("SendAudioSpecificConfig: %02x %02x %02x %02x, return %d\r\n",  body[0],  body[1],  body[2],  body[3], iRet);
     _iASCSentFlag = 1;
     return iRet;
 }
@@ -422,7 +418,6 @@ int LibRtmpSession::SendAudioSpecificConfig(int aactype, int sampleRate, int cha
     
     int iRet = RtmpPacketSend(&rtmp_pack);
     LOGI("SendAudioSpecificConfig: %02x %02x %02x %02x, return %d",  body[0],  body[1],  body[2],  body[3], iRet);
-    printf("SendAudioSpecificConfig: %02x %02x %02x %02x, return %d\r\n",  body[0],  body[1],  body[2],  body[3], iRet);
     _iASCSentFlag = 1;
     return iRet;
 }

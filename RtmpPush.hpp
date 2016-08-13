@@ -2,6 +2,7 @@
 #define RTMP_PUSH_H
 #include "DataQueue.hpp"
 #include "LibRtmpSession.hpp"
+#include "FLVParser.hpp"
 
 class RtmpPush
 {
@@ -17,17 +18,15 @@ private:
 
     int waitForConnect();
 
-    void DataHandle(DATA_QUEUE_ITEM* pItem);
-    void MediaHandle(unsigned char* pMediaData, int iMediaLength);
-    void AudioHandle(unsigned char* pAudioData, int iMediaLength, unsigned int uiTimestamp);
-    void VideoHandle(unsigned char* pVideoData, int iMediaLength, unsigned int uiTimestamp);
+    void DataHandle(unsigned char* pData, int iLength);
+
 private:
     char _szRtmpUrl[512];
     unsigned char _pAscData[2];
     unsigned char _pPpsSpsData[512];
     
     LibRtmpSession* _rtmpSession;
-    unsigned char* _pReadBuffer;
+    FLVParser* _flvParser;
 
     int _iStartFlag;
     pthread_t threadId;

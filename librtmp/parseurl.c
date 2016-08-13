@@ -59,11 +59,6 @@ int RTMP_ParseURL(const char *url, int *protocol, AVal *host, unsigned int *port
 		*protocol = RTMP_PROTOCOL_RTMP;
 	else if(len == 5 && strncasecmp(url, "rtmpt", 5)==0)
 		*protocol = RTMP_PROTOCOL_RTMPT;
-	else if(len == 4 && strncasecmp(url, "http", 4)==0)
-	{
-	    printf("protocol: %d\r\n", RTMP_PROTOCOL_RTMPT);
-		*protocol = RTMP_PROTOCOL_RTMPT;
-	}
 	else if(len == 5 && strncasecmp(url, "rtmps", 5)==0)
 	        *protocol = RTMP_PROTOCOL_RTMPS;
 	else if(len == 5 && strncasecmp(url, "rtmpe", 5)==0)

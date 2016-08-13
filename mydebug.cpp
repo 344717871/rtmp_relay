@@ -4,10 +4,11 @@
 #include <stdarg.h>
 
 const int DEBUG_BUFFER_SIZE = 8192;
-const int DEBUG_ENABLE = 1;
+const int DEBUG_ENABLE = 0;
 
 void DebugString(const char* szDbg, ...)
 {
+    //仅仅调试使用, 非线程安全
     if(!DEBUG_ENABLE)
     {
         return;
@@ -25,6 +26,7 @@ void DebugString(const char* szDbg, ...)
 
 void DebugBody(char* szDscr, unsigned char* pData, int iLen)
 {
+    //仅仅调试使用, 非线程安全
     if(!DEBUG_ENABLE)
     {
         return;
