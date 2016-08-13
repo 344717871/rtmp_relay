@@ -40,7 +40,7 @@ FLVPlayInfo* FLVParser::parse(unsigned char * pFlvData, int iFlvLength, int& iLe
         bReadHeaderFlag = true;
         iCurrent -= iOffset;
     }
-        iOffset, iFlvLength);
+
     if(iOffset >= iFlvLength)
     {
         return NULL;
@@ -54,7 +54,6 @@ FLVPlayInfo* FLVParser::parse(unsigned char * pFlvData, int iFlvLength, int& iLe
         iCurrent -= PREVIOUS_TAG_SIZE;
     }
     
-    pCurrnetData[0], pCurrnetData[1], pCurrnetData[2], pCurrnetData[3]);
     if(pCurrnetData[0] == 0x08)//audio
     {
         FLVPlayInfo* pAudioInfo = readAudio(pCurrnetData, iCurrent, iLeftLength);
