@@ -136,6 +136,8 @@ void RtmpPush::OnWork()
         int iLength = pItem->_iLength;
 
         DataHandle(pData, iLength);
+        free(pData);
+        free(pItem);
         usleep(RTMP_PUSH_SLEEP_INTERVAL);
     }
     _rtmpSession->DisConnect();
